@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEXDIGITAL | Acelere seus Resultados</title>
+    <meta name="description"
+        content="Agência de performance focada em gestão de redes sociais, tráfego pago e criação de sites.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#000000',
+                        surface: '#050505',
+                        surface2: '#0a0a0a',
+                        border: '#1a1a1a',
+                        primary: '#ff5a00', // vivid orange (logo main)
+                        secondary: '#ff9000', // light amber (logo highlight)
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --glass-bg: rgba(0, 0, 0, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background-color: #000000;
+            color: #fafafa;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ff9000 0%, #ff5a00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-nav {
+            background: rgba(3, 3, 3, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* Animated Premium Border */
+        .premium-border {
+            position: relative;
+            background: var(--glass-bg);
+            border-radius: 1.5rem;
+            z-index: 1;
+        }
+
+        .premium-border::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 1.6rem;
+            background: linear-gradient(45deg, #ff5a00, #ff9000, #fbbf24, #ff5a00);
+            background-size: 300% 300%;
+            animation: moveGradient 4s linear infinite;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 90, 0, 0.15) 0%, rgba(255, 144, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 90, 0, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(255, 90, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-primary/30 selection:text-white relative">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-2] bg-dark"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid opacity-50"></div>
+
+    <!-- Animated Orbs -->
+    <div
+        class="fixed top-0 -left-64 w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-blob pointer-events-none">
+    </div>
+    <div
+        class="fixed top-40 -right-64 w-[500px] h-[500px] bg-secondary/20 rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-blob animation-delay-2000 pointer-events-none">
+    </div>
+    <div
+        class="fixed -bottom-64 left-20 w-[600px] h-[600px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-blob animation-delay-4000 pointer-events-none">
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="h-12 w-auto shrink-0 transition-transform duration-500 group-hover:scale-110">
+                    <img src="./logo-symbol.png" alt="FexDigital Logo" class="h-full w-auto object-contain"
+                        style="filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.1);" />
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-display font-black text-2xl tracking-tight text-white uppercase">Fex<span
+                            class="text-primary">Digital</span></span>
+                    <span class="text-[9px] font-semibold tracking-[0.25em] uppercase text-zinc-500">Performance
+                        Agency</span>
+                </div>
+            </a>
+
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                <a href="#como-funciona"
+                    class="hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all">O
+                    que fazemos</a>
+                <a href="#planos"
+                    class="hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all">Planos</a>
+                <a href="#extras"
+                    class="hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all">Extras</a>
+            </div>
+            <button onclick="openAttendantModal('Contato Inicial')"
+                class="hidden md:flex items-center gap-2 bg-white text-dark px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+                Ver Preços
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-zinc-300 hover:text-white transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 z-40 hidden md:hidden">
+            <div class="absolute inset-0 bg-black/95 backdrop-blur-2xl"></div>
+            <div class="relative h-full flex flex-col items-center justify-center gap-8 p-6">
+                <a href="#como-funciona"
+                    class="text-3xl font-display font-bold text-white hover:text-primary transition-colors mobile-link">O
+                    que fazemos</a>
+                <a href="#planos"
+                    class="text-3xl font-display font-bold text-white hover:text-primary transition-colors mobile-link">Planos</a>
+                <a href="#extras"
+                    class="text-3xl font-display font-bold text-white hover:text-primary transition-colors mobile-link">Extras</a>
+                <button onclick="openAttendantModal('Mobile Nav')"
+                    class="mt-8 w-full max-w-xs bg-primary text-white py-5 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(255,90,0,0.3)]">
+                    Contato WhatsApp
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-32 px-6 flex flex-col items-center justify-center min-h-[95vh]">
+        <div class="hero-glow"></div>
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 glass-card mb-8">
+                <span
+                    class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse"></span>
+                <span class="text-xs font-semibold text-zinc-300 tracking-wide uppercase">Agência de Performance
+                    Digital</span>
+            </div>
+            <h1
+                class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight mb-6 leading-[1.05]">
+                Cliques não bastam.<br class="hidden md:block">
+                <span class="text-gradient">Queremos clientes.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Domine as redes sociais e posicione sua marca com design impecável, tráfego inteligente e estratégias
+                desenhadas para escalar.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openAttendantModal('Escolha de Plano')"
+                    class="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-bold text-base hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,90,0,0.3)] hover:shadow-[0_0_40px_rgba(255,90,0,0.6)] relative cursor-pointer group">
+                    <span class="relative z-10 flex items-center gap-2">
+                        Escolher meu Plano
+                        <i data-lucide="chevron-right"
+                            class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </button>
+                <a href="#extras"
+                    class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base text-white border border-white/10 glass-card hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    Explorar Serviços
+                </a>
+            </div>
+        </div>
+
+        <!-- Dashboard Abstract Element -->
+        <div class="w-full max-w-5xl mx-auto mt-20 relative reveal">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent z-10"></div>
+            <div
+                class="glass-card rounded-2xl border border-white/10 p-2 overflow-hidden shadow-2xl shadow-primary/10 relative group">
+                <div class="bg-surface2 rounded-xl border border-border flex items-center h-10 px-4 gap-3 mb-2">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div
+                        class="flex-1 bg-surface border border-border rounded-md h-6 md:flex hidden mx-4 items-center px-3">
+                        <i data-lucide="lock" class="w-3 h-3 text-zinc-500 mr-2"></i>
+                        <span class="text-[10px] text-zinc-500 font-mono">fexdigital.com.br/dashboard</span>
+                    </div>
+                </div>
+                <div
+                    class="h-64 md:h-96 bg-surface rounded-xl border border-border overflow-hidden relative p-6 flex flex-col justify-end transition-all duration-500 group-hover:bg-[#0f0f13]">
+                    <!-- Faux charts abstract -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNHYtbDItMiAuLi4iIGZpbGw9IiM5QzkyQTMiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvZz48L3N2Zz4=')] opacity-20 pointer-events-none group-hover:opacity-[0.25] transition-opacity">
+                    </div>
+
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full relative z-0">
+                        <div
+                            class="glass-card rounded-xl border border-white/5 p-4 flex flex-col justify-between animate-float hover:border-primary/40 hover:bg-white/[0.02] transition-colors relative overflow-hidden group/card shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+                            <div
+                                class="absolute -inset-px rounded-xl bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 opacity-0 group-hover/card:opacity-100 blur-sm transition-opacity duration-500">
+                            </div>
+                            <i data-lucide="trending-up" class="text-primary w-6 h-6 mb-4 relative z-10"></i>
+                            <div class="relative z-10">
+                                <p class="text-zinc-500 text-xs uppercase font-bold tracking-wider">Alcance Mês</p>
+                                <p class="text-3xl md:text-4xl font-display font-bold text-white">+124%</p>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-xl border border-white/5 p-4 flex flex-col justify-between animate-float hover:border-primary/30 transition-colors"
+                            style="animation-delay: 1s;">
+                            <i data-lucide="users" class="text-primary w-6 h-6 mb-4"></i>
+                            <div>
+                                <p class="text-zinc-500 text-xs uppercase font-bold tracking-wider">Leads Gerados</p>
+                                <p class="text-3xl md:text-4xl font-display font-bold">842</p>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-xl border border-white/5 p-4 flex flex-col justify-between hidden md:flex animate-float hover:border-secondary/40 hover:bg-white/[0.02] transition-colors relative overflow-hidden group/card shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                            style="animation-delay: 2s;">
+                            <div
+                                class="absolute -inset-px rounded-xl bg-gradient-to-r from-secondary/0 via-secondary/20 to-secondary/0 opacity-0 group-hover/card:opacity-100 blur-sm transition-opacity duration-500">
+                            </div>
+                            <i data-lucide="mouse-pointer-click" class="text-secondary w-6 h-6 mb-4 relative z-10"></i>
+                            <div class="relative z-10">
+                                <p class="text-zinc-500 text-xs uppercase font-bold tracking-wider">Conversão</p>
+                                <p class="text-3xl md:text-4xl font-display font-bold text-white">4.8%</p>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-xl border border-white/5 p-4 flex-col justify-between hidden lg:flex animate-float hover:border-primary/40 hover:bg-white/[0.02] transition-colors relative overflow-hidden group/card shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                            style="animation-delay: 3s;">
+                            <div
+                                class="absolute -inset-px rounded-xl bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 opacity-0 group-hover/card:opacity-100 blur-sm transition-opacity duration-500">
+                            </div>
+                            <i data-lucide="activity" class="text-primary w-6 h-6 mb-4 relative z-10"></i>
+                            <div class="relative z-10">
+                                <p class="text-zinc-500 text-xs uppercase font-bold tracking-wider">Engajamento</p>
+                                <p class="text-3xl md:text-4xl font-display font-bold text-white">Alta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assinaturas / Planos -->
+    <section id="planos" class="py-32 px-6 relative bg-dark overflow-hidden">
+        <!-- Background Text "Planos" -->
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0">
+            <h2
+                class="font-display text-[10rem] md:text-[16rem] font-bold text-white/[0.03] tracking-tight leading-none">
+                Planos</h2>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start mt-10 md:mt-24">
+
+                <!-- Básico -->
+                <div
+                    class="glass-card p-8 rounded-[2rem] border border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl flex flex-col items-center text-center relative hover:border-primary/30 transition-colors reveal">
+                    <div
+                        class="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-[11px] font-semibold mb-6 flex items-center gap-2">
+                        <span>💸</span> Mais em conta
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold mb-1 text-white">Plano Básico</h3>
+                    <p class="text-zinc-500 text-[11px] mb-6">Ideal para quem está começando no digital</p>
+
+                    <ul class="space-y-3 text-zinc-300 text-[13px] w-full text-left mb-8 font-medium">
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span><b>8 posts/mês</b> (artes para redes sociais)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Legendas estratégicas</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Agendamento de posts</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Suporte via WhatsApp (horário comercial)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Relatório mensal simples</span>
+                        </li>
+                    </ul>
+
+                    <div class="mb-6">
+                        <div class="text-4xl font-display font-bold text-white mb-1">R$ 550</div>
+                        <div class="text-sm text-zinc-500">Por mês</div>
+                    </div>
+
+                    <button onclick="openAttendantModal('Plano Básico')"
+                        class="w-full px-6 py-3 rounded-full font-semibold bg-primary hover:brightness-110 text-white transition-all text-[13px] flex items-center justify-center gap-2 mb-6 shadow-[0_0_15px_rgba(255,90,0,0.3)]">
+                        Escolher Plano
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+
+                    <div class="w-full px-4 py-2 border border-white/10 rounded-full text-[10px] text-zinc-500">
+                        Contrato mínimo de 3 meses
+                    </div>
+                </div>
+
+                <!-- Profissional -->
+                <div class="glass-card p-8 rounded-[2rem] border border-primary/20 bg-[#0a0a0a]/80 backdrop-blur-xl flex flex-col items-center text-center relative md:-translate-y-4 hover:border-primary/40 transition-colors shadow-[0_0_40px_rgba(255,90,0,0.08)] reveal"
+                    style="animation-delay: 100ms;">
+                    <div
+                        class="px-4 py-1.5 rounded-full bg-primary text-white text-[11px] font-semibold mb-6 flex items-center gap-2 shadow-[0_0_15px_rgba(255,90,0,0.5)]">
+                        <i data-lucide="star" class="w-3 h-3 fill-white"></i> Mais Escolhido
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold mb-1 text-white">Plano Profissional</h3>
+                    <p class="text-zinc-500 text-[11px] mb-6">Para quem busca vendas e autoridade digital</p>
+
+                    <ul class="space-y-3 text-zinc-300 text-[13px] w-full text-left mb-8 font-medium">
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span><b>12 posts/mês</b> (artes para redes sociais)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Legendas estratégicas</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Gestão de Instagram e Facebook</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Agendamento de posts</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Resposta básica a comentários</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Relatório de desempenho mensal</span>
+                        </li>
+                    </ul>
+
+                    <div class="mb-6">
+                        <div class="text-4xl font-display font-bold text-white mb-1">R$ 800</div>
+                        <div class="text-sm text-zinc-500">Por mês</div>
+                    </div>
+
+                    <button onclick="openAttendantModal('Plano Profissional')"
+                        class="w-full px-6 py-3 rounded-full font-semibold bg-primary hover:brightness-110 text-white transition-all text-[13px] flex items-center justify-center gap-2 mb-6 shadow-[0_0_15px_rgba(255,90,0,0.3)]">
+                        Escolher Plano
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+
+                    <div class="w-full px-4 py-2 border border-white/10 rounded-full text-[10px] text-zinc-500">
+                        Contrato mínimo de 3 meses
+                    </div>
+                </div>
+
+                <!-- Premium -->
+                <div class="glass-card p-8 rounded-[2rem] border border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl flex flex-col items-center text-center relative hover:border-primary/30 transition-colors reveal"
+                    style="animation-delay: 200ms;">
+                    <div
+                        class="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-[11px] font-semibold mb-6 flex items-center gap-2">
+                        <i data-lucide="flame" class="w-3 h-3"></i> Tudo incluso
+                    </div>
+
+                    <h3 class="font-display text-2xl font-bold mb-1 text-white">Plano Premium</h3>
+                    <p class="text-zinc-500 text-[11px] mb-6">Para escalar sua presença com máxima entrega</p>
+
+                    <ul class="space-y-3 text-zinc-300 text-[13px] w-full text-left mb-8 font-medium">
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span><b>20 posts/mês</b> (artes para redes sociais)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span><b>4 Reels</b> por mês</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Gestão completa das redes</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Estratégia de conteúdo</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Relatório detalhado mensal</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div
+                                class="w-4 h-4 rounded bg-primary flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,90,0,0.4)]">
+                                <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <span>Reunião estratégica mensal</span>
+                        </li>
+                    </ul>
+
+                    <div class="mb-6">
+                        <div class="text-4xl font-display font-bold text-white mb-1">R$ 1.400</div>
+                        <div class="text-sm text-zinc-500">Por mês</div>
+                    </div>
+
+                    <button onclick="openAttendantModal('Plano Premium')"
+                        class="w-full px-6 py-3 rounded-full font-semibold bg-primary hover:brightness-110 text-white transition-all text-[13px] flex items-center justify-center gap-2 mb-6 shadow-[0_0_15px_rgba(255,90,0,0.3)]">
+                        Escolher Plano
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+
+                    <div class="w-full px-4 py-2 border border-white/10 rounded-full text-[10px] text-zinc-500">
+                        Contrato mínimo de 3 meses
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="mt-32 max-w-3xl mx-auto text-center reveal">
+                <h2 class="font-display text-4xl md:text-5xl font-normal mb-6 leading-tight text-white/90">
+                    Design não é sorte.<br>É processo.
+                </h2>
+                <p class="text-zinc-400 text-[15px] leading-relaxed max-w-2xl mx-auto">
+                    Na FexDigital, cada entrega segue um método claro. Pensamos cada etapa com estratégia, estética e
+                    escalabilidade. Você sabe o que esperar, e o que vai receber: Design de alto padrão com foco em
+                    resultado.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extras / Bento Grid -->
+    <section id="extras" class="py-32 px-6 relative border-t border-border bg-gradient-to-b from-dark to-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 md:flex justify-between items-end reveal">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-secondary/20 bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-widest mb-4">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                        Boost no seu negócio
+                    </div>
+                    <h2 class="font-display text-4xl md:text-5xl font-black mb-4">Serviços <span
+                            class="text-gradient">Extras.</span></h2>
+                    <p class="text-zinc-400 text-lg">Serviços on-demand pensados para entregar o máximo em branding e
+                        conversão.</p>
+                </div>
+            </div>
+
+            <!-- Grid Bento -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-min">
+
+                <!-- Gestão de Tráfego - Maior (Span 2) -->
+                <div
+                    class="glass-card p-8 rounded-3xl interactive-card reveal md:col-span-2 relative overflow-hidden group border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(255,90,0,0.15)] hover:border-primary/30 transition-all duration-500">
+                    <div
+                        class="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    </div>
+                    <div
+                        class="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
+                        <i data-lucide="mouse-pointer-click" class="w-64 h-64 text-primary"></i>
+                    </div>
+                    <div class="relative z-10 flex flex-col h-full justify-between cursor-pointer"
+                        onclick="openAttendantModal('Tráfego Pago')">
+                        <div>
+                            <div
+                                class="p-4 bg-primary/5 rounded-2xl w-max mb-6 group-hover:bg-primary/20 transition-colors border border-primary/10 text-primary shadow-inner">
+                                <i data-lucide="mouse-pointer-click"
+                                    class="w-8 h-8 group-hover:scale-110 transition-transform"></i>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-2 text-white">Gestão de Tráfego Pago</h3>
+                            <p class="text-zinc-400 text-sm max-w-sm mb-6">Campanhas no Google e Meta Ads otimizadas por
+                                IA e experiência humana com foco agressivo na captação e conversão.</p>
+                        </div>
+                        <div class="flex items-baseline gap-2 mt-4">
+                            <span class="text-xs text-zinc-500 uppercase font-bold tracking-widest">A partir de</span>
+                            <span class="text-4xl font-black font-display text-white">R$450</span>
+                            <span class="text-zinc-600 font-medium">/mês</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Criação de Site -->
+                <div
+                    class="glass-card p-6 md:p-8 rounded-3xl interactive-card reveal md:col-span-2 lg:col-span-2 group min-h-[300px] flex flex-col justify-between border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(255,90,0,0.15)] hover:border-primary/30 transition-all duration-500 relative overflow-hidden">
+                    <div
+                        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="p-3 bg-white/5 rounded-xl border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all duration-300 shadow-inner">
+                                <i data-lucide="layout-template" class="w-6 h-6"></i>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-white/10 border border-white/10 text-[10px] font-bold uppercase tracking-widest rounded-full text-white">Sob
+                                Medida</span>
+                        </div>
+                        <h3 class="font-display text-xl md:text-2xl font-bold mb-2 text-white">Desenvolvimento Web</h3>
+                        <p class="text-zinc-400 text-sm max-w-sm">Landing Pages, Lojas Virtuais e Sites Institucionais
+                            de alta performance e design premium para converter os leads.</p>
+                    </div>
+                    <div class="mt-6 relative z-10">
+                        <button onclick="openAttendantModal('Desenvolvimento Web')"
+                            class="inline-block border border-zinc-700 bg-[#0a0a0a] text-zinc-300 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider group-hover:border-primary/50 group-hover:text-white transition-colors">Orçamento
+                            Sob Consulta</button>
+                    </div>
+                </div>
+
+                <!-- Logotipo -->
+                <div onclick="openAttendantModal('Logotipo')"
+                    class="glass-card p-6 md:p-8 rounded-3xl interactive-card reveal group flex flex-col justify-between min-h-[250px] border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(255,90,0,0.15)] hover:border-primary/30 transition-all duration-500 cursor-pointer">
+                    <div>
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
+                            <i data-lucide="pen-tool"
+                                class="w-5 h-5 text-zinc-300 group-hover:text-primary group-hover:-rotate-12 transition-all"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 text-white">Logótipo</h3>
+                        <p class="text-zinc-400 text-xs line-clamp-2 leading-relaxed">Criação de marcas memoráveis,
+                            minimalistas e de
+                            alta aplicação.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-3xl font-black font-display text-white">R$300</span>
+                    </div>
+                </div>
+
+                <!-- Identidade Visual -->
+                <div onclick="openAttendantModal('Identidade Visual')"
+                    class="glass-card p-6 md:p-8 rounded-3xl interactive-card reveal group flex flex-col justify-between min-h-[250px] border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(255,90,0,0.15)] hover:border-primary/30 transition-all duration-500 cursor-pointer">
+                    <div>
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:bg-yellow-500/20 group-hover:border-yellow-500/30 transition-colors">
+                            <i data-lucide="swatch-book"
+                                class="w-5 h-5 text-zinc-300 group-hover:text-yellow-400 group-hover:rotate-12 transition-all"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 text-white">Id. Visual</h3>
+                        <p class="text-zinc-400 text-xs line-clamp-2 leading-relaxed">Logo, paleta oficial, tipografia e
+                            todos os
+                            manuais da marca base.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-3xl font-black font-display text-white">R$360</span>
+                    </div>
+                </div>
+
+                <!-- Vídeo/Reels -->
+                <div onclick="openAttendantModal('Reels/Vídeo')"
+                    class="glass-card bg-gradient-to-br from-surface to-[#ff5a00]/[0.05] p-6 md:p-8 rounded-3xl interactive-card reveal md:col-span-2 group flex flex-col justify-between border border-primary/20 min-h-[250px] relative overflow-hidden overflow-hidden shadow-[0_8px_32px_rgba(255,90,0,0.05)] hover:shadow-[0_12px_48px_rgba(255,90,0,0.15)] cursor-pointer">
+                    <div
+                        class="absolute -right-4 -top-8 w-40 h-40 bg-primary/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    </div>
+                    <div class="flex justify-between items-start relative z-10">
+                        <div>
+                            <div
+                                class="p-3 bg-primary/10 w-max rounded-2xl mb-6 shadow-inner border border-primary/20 group-hover:scale-110 transition-transform">
+                                <i data-lucide="video" class="w-7 h-7 text-primary"></i>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold mb-2 text-white">Vídeo / Edição de Reels</h3>
+                            <p class="text-zinc-400 text-sm max-w-sm">Edição dinâmica inspirada em grandes criadores,
+                                com transições em alta e legendas animadas prendendo a atenção.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-baseline gap-1 mt-6 relative z-10">
+                        <span class="text-4xl font-black font-display text-white">R$40</span>
+                        <span class="text-zinc-500 font-medium">/unidade extra</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Footer -->
+    <footer class="pt-32 pb-10 text-center px-6 relative overflow-hidden border-t border-white/5">
+        <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[400px] bg-gradient-to-t from-primary/20 to-transparent blur-[80px] rounded-t-[100%] pointer-events-none -z-10 opacity-50">
+        </div>
+
+        <div
+            class="max-w-3xl mx-auto reveal mb-20 glass-card rounded-3xl p-10 md:p-16 relative overflow-hidden border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_48px_rgba(255,90,0,0.15)] hover:border-primary/30 transition-all duration-500 group">
+            <div
+                class="absolute -right-20 -top-20 w-64 h-64 bg-primary/20 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0">
+            </div>
+            <div
+                class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNykiLz48L3N2Zz4=')] opacity-50 z-0">
+            </div>
+
+            <div class="relative z-10">
+                <div
+                    class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(255,90,0,0.4)] group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="rocket" class="w-8 h-8 text-white"></i>
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-black mb-6 text-white">Pronto para dar o<br>próximo
+                    passo?</h2>
+                <p class="text-zinc-400 mb-10 max-w-xl mx-auto text-lg leading-relaxed">
+                    Deixe a complexidade técnica e visual connosco. Foque naquilo que você faz de melhor: <span
+                        class="text-white font-medium block mt-1">gerir o seu negócio.</span>
+                </p>
+
+                <button onclick="openAttendantModal('Final CTA')"
+                    class="inline-flex items-center gap-3 bg-primary text-white px-8 py-5 rounded-full font-bold text-lg hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,90,0,0.4)] hover:shadow-[0_0_40px_rgba(255,90,0,0.6)] group/btn">
+                    <i data-lucide="message-circle" class="w-5 h-5 group-hover/btn:scale-110 transition-transform"></i>
+                    Falar com um Especialista
+                </button>
+            </div>
+        </div>
+
+        <div
+            class="mt-20 pt-8 border-t border-border text-zinc-500 text-sm flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4 relative z-10">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="h-10 w-auto shrink-0 transition-all duration-300 group-hover:scale-110">
+                    <img src="./logo-symbol.png" alt="FexDigital Logo" class="h-full w-auto object-contain"
+                        style="filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.1);" />
+                </div>
+                <span class="font-display font-black text-lg tracking-tight text-white uppercase">Fex<span
+                        class="text-primary">Digital</span></span>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/fexdigital.oficial?igsh=bnkyczd6anpxdWk=" target="_blank"
+                    rel="noopener" class="hover:text-white transition-colors">Instagram</a>
+
+                <a href="#" class="hover:text-white transition-colors">Portfólio</a>
+                <a href="#" class="hover:text-white transition-colors">WhatsApp</a>
+            </div>
+            <p>&copy; 2024 Todos os direitos reservados à marca.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Attendant Modal -->
+    <div id="attendantModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-black/80 backdrop-blur-md transition-all duration-300 opacity-0">
+        <div class="relative w-full max-w-sm glass-card p-10 rounded-[2.5rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform scale-90 transition-all duration-300"
+            id="modalContent">
+            <button onclick="closeAttendantModal()"
+                class="absolute right-6 top-6 text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h4 class="font-display text-2xl font-bold text-center mb-2 text-white">Falar com quem?</h4>
+            <p class="text-zinc-500 text-center text-sm mb-10 font-medium">Escolha seu atendente favorito:</p>
+
+            <div class="space-y-4">
+                <button onclick="redirectToWhatsApp('Freitas')"
+                    class="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5 transition-all group active:scale-95">
+                    <div
+                        class="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all shadow-inner">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <span
+                                class="block text-white font-bold text-lg group-hover:text-orange-500 transition-colors">Freitas</span>
+                            <i data-lucide="badge-check" class="w-4 h-4 text-blue-500 fill-blue-500/20"></i>
+                        </div>
+                        <span class="text-xs text-zinc-500 font-medium tracking-wide">Filmmaker/Social
+                            Media/Editor</span>
+                    </div>
+                </button>
+
+
+
+                <button onclick="redirectToWhatsApp('Ferreira')"
+                    class="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5 transition-all group active:scale-95">
+                    <div
+                        class="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all shadow-inner">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <span
+                                class="block text-white font-bold text-lg group-hover:text-orange-500 transition-colors">Ferreira</span>
+                            <i data-lucide="badge-check" class="w-4 h-4 text-blue-500 fill-blue-500/20"></i>
+                        </div>
+                        <span class="text-xs text-zinc-500 font-medium tracking-wide">Web designer</span>
+                    </div>
+                </button>
+
+
+                <button onclick="redirectToWhatsApp('Guilherme')"
+                    class="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5 transition-all group active:scale-95">
+                    <div
+                        class="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all shadow-inner">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <span
+                                class="block text-white font-bold text-lg group-hover:text-orange-500 transition-colors">Guilherme</span>
+                            <i data-lucide="badge-check" class="w-4 h-4 text-blue-500 fill-blue-500/20"></i>
+                        </div>
+                        <span class="text-xs text-zinc-500 font-medium tracking-wide">Social Media</span>
+                    </div>
+                </button>
+
+                <button onclick="redirectToWhatsApp('Isa')"
+                    class="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5 transition-all group active:scale-95">
+                    <div
+                        class="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all shadow-inner">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <span
+                                class="block text-white font-bold text-lg group-hover:text-orange-500 transition-colors">Isa</span>
+                            <i data-lucide="badge-check" class="w-4 h-4 text-blue-500 fill-blue-500/20"></i>
+                        </div>
+                        <span class="text-xs text-zinc-500 font-medium tracking-wide">Social Media</span>
+                    </div>
+                </button>
+
+                <button onclick="redirectToWhatsApp('Symon')"
+                    class="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/40 hover:bg-orange-500/5 transition-all group active:scale-95">
+                    <div
+                        class="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all shadow-inner">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <span
+                                class="block text-white font-bold text-lg group-hover:text-orange-500 transition-colors">Symon</span>
+                            <i data-lucide="badge-check" class="w-4 h-4 text-blue-500 fill-blue-500/20"></i>
+                        </div>
+                        <span class="text-xs text-zinc-500 font-medium tracking-wide">Designer Gráfico</span>
+                    </div>
+                </button>
+
+
+
+                <button onclick="redirectToWhatsApp('Suporte')"
+                    class="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/40 hover:bg-blue-500/5 transition-all group active:scale-95">
+                    <div
+                        class="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all shadow-inner">
+                        <i data-lucide="headset" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                            <span
+                                class="block text-white font-bold text-lg group-hover:text-blue-500 transition-colors">Suporte</span>
+                            <i data-lucide="badge-check" class="w-4 h-4 text-blue-500 fill-blue-500/20"></i>
+                        </div>
+                        <span class="text-xs text-zinc-500 font-medium tracking-wide">Equipe de Atendimento</span>
+                    </div>
+                </button>
+
+
+
+
+
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/5 text-center">
+                <div class="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em]">FexDigital Agency</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        // Modal Logic
+        let currentContext = "Geral";
+        const modal = document.getElementById('attendantModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openAttendantModal(context) {
+            currentContext = context;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeAttendantModal() {
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        function redirectToWhatsApp(attendant) {
+            const numbers = {
+                'Freitas': '557998771410', // Placeholder - User should update
+                'Ferreira': '5579988225837', // Placeholder - User should update
+                'Guilherme': '557998328062',
+                'Isa': '557991362173',
+                'Symon': '557996069648',
+                'Suporte': '557998328062' // Placeholder - User should update
+            };
+
+
+
+
+
+
+
+
+
+            const message = `Olá ${attendant}, vim através do site da FexDigital e gostaria de mais informações sobre: ${currentContext}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${numbers[attendant]}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+            closeAttendantModal();
+        }
+
+        // Close modal on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeAttendantModal();
+        });
+
+        // Scroll animations (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Sticky Navbar effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-dark/80');
+                navbar.classList.remove('bg-transparent', 'border-transparent');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-dark/80');
+                navbar.classList.add('bg-transparent', 'border-transparent');
+            }
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            }
+            lucide.createIcons();
+        }
+
+        if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
+</body>
+
+</html>
